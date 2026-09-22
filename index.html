@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ÓPTICA ROVERSO | Catálogo </title>
+
+  <!-- Google Fonts & Remix Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Archivo CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- BANNER SUPERIOR CON TEXTO EN MOVIMIENTO (TICKER/MARQUEE) -->
+<div class="top-announcement-bar">
+  <div class="marquee-track">
+    <div class="marquee-content">
+      <span>ENVIOS A TODO EL PAÍS</span>
+      <span class="dot">•</span>
+      <span>COLECCIÓN EXCLUSIVA 2026</span>
+      <span class="dot">•</span>
+      <span>ATENCIÓN PERSONALIZADA POR WHATSAPP</span>
+      <span class="dot">•</span>
+      <span>LENTES DE DISEÑO &amp; PRECISIÓN VISUAL</span>
+      <span class="dot">•</span>
+    </div>
+    <!-- Duplicamos el contenido para lograr el efecto de bucle infinito continuo -->
+    <div class="marquee-content" aria-hidden="true">
+      <span>ENVIOS A TODO EL PAÍS</span>
+      <span class="dot">•</span>
+      <span>COLECCIÓN EXCLUSIVA 2026</span>
+      <span class="dot">•</span>
+      <span>ATENCIÓN PERSONALIZADA POR WHATSAPP</span>
+      <span class="dot">•</span>
+      <span>LENTES DE DISEÑO &amp; PRECISIÓN VISUAL</span>
+      <span class="dot">•</span>
+    </div>
+  </div>
+</div>
+  <!-- BARRA DE NAVEGACIÓN -->
+  <header class="navbar">
+    <!-- Logo Elegante Óptica Roverso -->
+    <div class="logo" onclick="showSection('home')">
+      <span class="logo-sub">ÓPTICA</span>
+      <span class="logo-main">ROVERSO</span>
+    </div>
+
+    <!-- Menú Móvil -->
+    <button class="mobile-toggle" id="mobile-toggle" onclick="toggleMobileMenu()" aria-label="Abrir menú">
+      <i class="ri-menu-line" id="toggle-icon"></i>
+    </button>
+
+    <!-- Enlaces de Navegación -->
+    <nav class="nav-links" id="nav-links">
+      <a href="#" onclick="showSection('home'); closeMobileMenu();">INICIO</a>
+      
+      <!-- Desplegable Marcas -->
+      <div class="dropdown">
+        <a href="#" class="dropdown-trigger" onclick="toggleMobileDropdown(event)">
+          MARCAS <i class="ri-arrow-down-s-line"></i>
+        </a>
+        <div class="dropdown-menu" id="brands-dropdown">
+          <!-- Generado dinámicamente con JS -->
+        </div>
+      </div>
+
+      <a href="#contacto" onclick="openWhatsApp('Hola, quisiera realizar una consulta.'); closeMobileMenu();">CONTACTO</a>
+    </nav>
+  </header>
+
+  <!-- SECCIÓN INICIO -->
+  <section id="home" class="page-section active">
+    <!-- Hero Banner Ancho Completo -->
+    <div class="hero-banner">
+      <!-- Botón reubicado en la esquina inferior derecha del banner -->
+        <button class="btn-hero-floating" onclick="showSection('catalog')">
+        VER CATÁLOGO <i class="ri-arrow-right-line"></i>
+        </button>
+    </div>
+
+    <!-- Carrusel Destacados -->
+    <div class="featured-section">
+      <h2 class="section-title">MODELOS DESTACADOS</h2>
+      <div class="carousel-wrapper">
+        <button class="carousel-btn prev" onclick="scrollCarousel(-1)" aria-label="Anterior">&#10094;</button>
+        <div class="carousel-track" id="featured-carousel">
+          <!-- Generado dinámicamente -->
+        </div>
+        <button class="carousel-btn next" onclick="scrollCarousel(1)" aria-label="Siguiente">&#10095;</button>
+      </div>
+      <!-- NUEVO LLAMADO A LA ACCIÓN DEBAJO DEL CARRUSEL -->
+        <div class="carousel-cta-container">
+            <button class="btn-carousel-cta" onclick="showSection('catalog')">
+                EXPLORAR CATÁLOGO COMPLETO <i class="ri-arrow-right-line"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN SOBRE NOSOTROS / INFO DEL COMERCIO -->
+    <div class="about-section" id="nosotros">
+      <div class="about-container">
+        <div class="about-grid">
+          
+          <!-- Columna Texto e Historia -->
+          <div class="about-text">
+            <span class="about-tag">ÓPTICA ROVERSO</span>
+            <h2 class="about-title">NUESTRA HISTORIA &amp; COMPROMISO</h2>
+            <p class="about-description">
+              Desde hace más de 15 años nos dedicamos a cuidar la salud visual de nuestros clientes, combinando tecnología de vanguardia en cristales con las marcas y diseños más exclusivos del mercado internacional.
+            </p>
+            <p class="about-description">
+              En Óptica Roverso entendemos los lentes no solo como una necesidad técnica, sino como una declaración de estilo e identidad. Nuestro equipo de profesionales está listo para brindarte un asesoramiento personalizado y encontrar el marco perfecto para vos.
+            </p>
+          </div>
+
+          <!-- Columna Información Comercial -->
+          <div class="about-info-card">
+            <h3>INFORMACIÓN DEL LOCAL</h3>
+            
+            <div class="info-item">
+              <i class="ri-map-pin-2-line"></i>
+              <div>
+                <strong>Ubicación</strong>
+                <p>Av. Principal 1234, Centro</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <i class="ri-time-line"></i>
+              <div>
+                <strong>Horarios de Atención</strong>
+                <p>Lunes a Viernes: 09:00 - 13:00 / 16:30 - 20:30</p>
+                <p>Sábados: 09:00 - 13:30</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <i class="ri-phone-line"></i>
+              <div>
+                <strong>Teléfono &amp; Consultas</strong>
+                <p>+54 9 11 0000-0000</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <i class="ri-mail-line"></i>
+              <div>
+                <strong>Correo Electrónico</strong>
+                <p>contacto@opticaroverso.com</p>
+              </div>
+            </div>
+
+            <button class="btn-about-ws" onclick="openWhatsApp('Hola, quisiera consultar sobre los horarios y ubicación del local.')">
+              <i class="ri-whatsapp-line"></i> CONTACTAR AHORA
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN CATÁLOGO / MARCAS -->
+  <section id="catalog" class="page-section">
+    <div class="catalog-container">
+      <h1 class="catalog-title" id="catalog-heading">CATÁLOGO COMPLETO</h1>
+      
+      <!-- Botones Filtro de Marcas -->
+      <div class="brands-filter-bar" id="filter-buttons">
+        <!-- Generado dinámicamente -->
+      </div>
+
+      <!-- Grilla de Productos -->
+      <div class="products-grid" id="products-grid">
+        <!-- Generado dinámicamente -->
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL DE DETALLE DE PRODUCTO -->
+  <div class="modal" id="product-modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">&times;</button>
+      <div class="modal-body">
+        <div class="modal-img-container">
+          <img id="modal-img" src="" alt="Lente Óptica Roverso">
+        </div>
+        <div class="modal-info">
+          <span class="modal-brand" id="modal-brand"></span>
+          <p class="modal-desc" id="modal-desc"></p>
+          <button class="btn-whatsapp" id="modal-ws-btn">
+            <i class="ri-whatsapp-line"></i> Consultar por WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTÓN FLOTANTE WHATSAPP -->
+  <a href="#" class="float-whatsapp" onclick="openWhatsApp('Hola, quisiera información sobre sus lentes.'); return false;" title="Chat por WhatsApp" aria-label="WhatsApp">
+    <i class="ri-whatsapp-fill"></i>
+  </a>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Apice Agency. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Archivo JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
