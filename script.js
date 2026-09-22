@@ -20,7 +20,36 @@ const products = [
     image: "img/rayban/1.webp", // O ruta local: "img/rayban-aviator.jpg"
     description: "Marco metálico en tono dorado con cristales verdes G-15 de alta protección UV.",
     featured: true // true para que salga en el carrusel de destacados, false si solo va al catálogo
-  }
+  },
+  {
+    id: 2,
+    brand: "Ray-Ban",
+    image: "img/rayban/2.webp", // O ruta local: "img/rayban-aviator.jpg"
+    description: "Marco metálico en tono dorado con cristales verdes G-15 de alta protección UV.",
+    featured: true // true para que salga en el carrusel de destacados, false si solo va al catálogo
+  },
+  {
+    id: 3,
+    brand: "Ray-Ban",
+    image: "img/rayban/3.webp", // O ruta local: "img/rayban-aviator.jpg"
+    description: "Marco metálico en tono dorado con cristales verdes G-15 de alta protección UV.",
+    featured: true // true para que salga en el carrusel de destacados, false si solo va al catálogo
+  },
+  {
+    id: 4,
+    brand: "Ray-Ban",
+    image: "img/rayban/4.webp", // O ruta local: "img/rayban-aviator.jpg"
+    description: "Marco metálico en tono dorado con cristales verdes G-15 de alta protección UV.",
+    featured: true // true para que salga en el carrusel de destacados, false si solo va al catálogo
+  },
+  {
+    id: 5,
+    brand: "Ray-Ban",
+    image: "img/rayban/5.webp", // O ruta local: "img/rayban-aviator.jpg"
+    description: "Marco metálico en tono dorado con cristales verdes G-15 de alta protección UV.",
+    featured: true // true para que salga en el carrusel de destacados, false si solo va al catálogo
+  },
+  
 ];
 let idCounter = 1;
 
