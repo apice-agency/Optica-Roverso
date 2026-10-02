@@ -77,6 +77,11 @@ document.addEventListener('DOMContentLoaded', () => {
   renderProducts('TODAS');
 });
 
+const navbar = document.querySelector('.navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > window.innerHeight - 150);
+}, { passive: true });
+
 // MANEJO DE SECCIONES (INICIO / CATÁLOGO)
 function showSection(sectionId) {
   document.querySelectorAll('.page-section').forEach(section => {
