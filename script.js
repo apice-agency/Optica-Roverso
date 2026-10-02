@@ -1,5 +1,5 @@
 
-const WHATSAPP_NUMBER = "5491100000000";
+const WHATSAPP_NUMBER = "+5492657642125";
 
 // LISTADO DE MARCAS DISPONIBLES
 const BRANDS = ["Ray-Ban", "Oakley", "Prada", "Vogue", "Gucci", "Tom Ford"];
