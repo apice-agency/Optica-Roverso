@@ -1,10 +1,6 @@
-
 const WHATSAPP_NUMBER = "+5492657642125";
 
-// LISTADO DE MARCAS DISPONIBLES
-const BRANDS = ["Ray-Ban", "Oakley", "Prada", "Vogue", "Gucci", "Tom Ford"];
-
-// FOTOS DE MUESTRA PARA LOS PRODUCTOS
+// FOTOS DE MUESTRA (solo para marcas con "muestra: true" en su archivo de stock)
 const SAMPLE_IMAGES = [
   "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=600&q=80",
   "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=600&q=80",
@@ -12,60 +8,29 @@ const SAMPLE_IMAGES = [
   "https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=600&q=80"
 ];
 
-// GENERAR MÁS DE 100 MODELOS
-const products = [
-    {
-    id: 1,
-    brand: "Ray-Ban",
-    image: "img/rayban/1.png", // O ruta local: "img/rayban-aviator.jpg"
-    description: "Marco metálico en tono dorado con cristales verdes G-15 de alta protección UV.",
-    featured: true // true para que salga en el carrusel de destacados, false si solo va al catálogo
-  },
-  {
-    id: 2,
-    brand: "Ray-Ban",
-    image: "img/rayban/2.png", // O ruta local: "img/rayban-aviator.jpg"
-    description: "Marco metálico en tono dorado con cristales verdes G-15 de alta protección UV.",
-    featured: true // true para que salga en el carrusel de destacados, false si solo va al catálogo
-  },
-  {
-    id: 3,
-    brand: "Ray-Ban",
-    image: "img/rayban/3.png", // O ruta local: "img/rayban-aviator.jpg"
-    description: "Marco metálico en tono dorado con cristales verdes G-15 de alta protección UV.",
-    featured: true // true para que salga en el carrusel de destacados, false si solo va al catálogo
-  },
-  {
-    id: 4,
-    brand: "Ray-Ban",
-    image: "img/rayban/4.png", // O ruta local: "img/rayban-aviator.jpg"
-    description: "Marco metálico en tono dorado con cristales verdes G-15 de alta protección UV.",
-    featured: true // true para que salga en el carrusel de destacados, false si solo va al catálogo
-  },
-  {
-    id: 5,
-    brand: "Ray-Ban",
-    image: "img/rayban/5.png", // O ruta local: "img/rayban-aviator.jpg"
-    description: "Marco metálico en tono dorado con cristales verdes G-15 de alta protección UV.",
-    featured: true // true para que salga en el carrusel de destacados, false si solo va al catálogo
-  },
-  
-];
-let idCounter = 1;
+// MARCAS: salen solas de los archivos de la carpeta /stock
+// (el orden es el de los <script> en el index.html)
+const BRANDS = Object.keys(window.STOCK || {});
+
+// ARMAR LISTA DE PRODUCTOS A PARTIR DEL STOCK DE CADA MARCA
+const products = [];
 
 BRANDS.forEach(brand => {
-  for (let i = 1; i <= 18; i++) {
-    const randomImg = SAMPLE_IMAGES[Math.floor(Math.random() * SAMPLE_IMAGES.length)];
-    const isFeatured = (idCounter % 7 === 0);
+  const stock = window.STOCK[brand];
+  const slug = brand.toLowerCase().replace(/[^a-z0-9]/g, "");   // "Tom Ford" -> "tomford"
+
+  for (let n = 1; n <= stock.cantidad; n++) {
+    const archivo = String(n).padStart(stock.digitos || 1, "0");
+    
 
     products.push({
-      id: idCounter,
+      id: `${slug}-${n}`,
       brand: brand,
-      image: randomImg,
-      featured: isFeatured,
-      description: `Armazón de alta resistencia y precisión de la firma ${brand}. Diseño liviano y ergonómico, apto para cristales graduados o multifocales.`
+      image: stock.muestra
+        ? SAMPLE_IMAGES[(n - 1) % SAMPLE_IMAGES.length]
+        : `${stock.carpeta}/${archivo}.${stock.extension || "webp"}`,
+      featured: (stock.destacados || []).includes(n)
     });
-    idCounter++;
   }
 });
 
@@ -166,7 +131,7 @@ function renderProducts(brandFilter) {
     : products.filter(p => p.brand === brandFilter);
 
   grid.innerHTML = filtered.map(product => `
-    <div class="product-card" onclick="openModal(${product.id})">
+    <div class="product-card" onclick="openModal('${product.id}')">
       <img class="product-img" src="${product.image}" loading="lazy">
       <div class="product-brand">${product.brand}</div>
     </div>
@@ -178,7 +143,7 @@ function renderCarousel() {
   const featured = products.filter(p => p.featured);
 
   carouselTrack.innerHTML = featured.map(product => `
-    <div class="carousel-card" onclick="openModal(${product.id})">
+    <div class="carousel-card" onclick="openModal('${product.id}')">
       <img class="product-img" src="${product.image}"  loading="lazy">
       <div class="product-brand">${product.brand}</div>
     </div>
@@ -201,7 +166,6 @@ function openModal(productId) {
 
   document.getElementById('modal-img').src = product.image;
   document.getElementById('modal-brand').innerText = product.brand;
-  document.getElementById('modal-desc').innerText = product.description;
 
   const wsBtn = document.getElementById('modal-ws-btn');
   const message = `Hola Óptica Roverso, quisiera información y consultar el valor de un modelo (${product.brand}).`;
