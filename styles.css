@@ -249,6 +249,21 @@ body::before {
 .mobile-toggle:active { transform: scale(0.88); }
 .navbar.scrolled .mobile-toggle { color: var(--text-color); text-shadow: none; }
 
+/* En el catálogo no hay foto detrás: el navbar usa el estilo "scrolled" desde el inicio */
+body:has(#catalog.active) .navbar {
+  background: rgba(255, 255, 255, 0.78);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  backdrop-filter: blur(16px) saturate(1.4);
+  border-bottom-color: var(--blue-100);
+  box-shadow: 0 12px 30px -20px rgba(0, 0, 104, 0.35);
+}
+body:has(#catalog.active) .logo img { filter: none; }
+body:has(#catalog.active) .mobile-toggle { color: var(--text-color); text-shadow: none; }
+@media (min-width: 851px) {
+  body:has(#catalog.active) .nav-links > a,
+  body:has(#catalog.active) .dropdown-trigger { color: var(--text-color); text-shadow: none; }
+}
+
 /* Desplegable de marcas */
 .dropdown { position: relative; display: inline-block; }
 
@@ -334,7 +349,7 @@ body::before {
   height: clamp(300px, 65vh, 650px);
   min-height: calc(100vh - var(--announcement-height));
   margin-top: calc(var(--nav-height) * -1);
-  padding: 30px 5%;
+  padding: 30px calc(5% + 80px) 30px 5%;   /* deja lugar al botón flotante de WhatsApp */
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
@@ -473,7 +488,8 @@ body::before {
   display: flex;
   gap: 20px;
   width: 100%;
-  padding: 10px 0;
+  padding: 14px 0 44px;     /* espacio para que la sombra de la tarjeta no se corte */
+  margin-bottom: -20px;
   overflow-x: auto;
   scroll-behavior: smooth;
   scroll-snap-type: x proximity;
