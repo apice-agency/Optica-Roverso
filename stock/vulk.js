@@ -2,7 +2,7 @@ window.STOCK = window.STOCK || {};
 
 window.STOCK["vulk"] = {
   carpeta: "img/vulk",
-  cantidad: 7,            // cuántas fotos hay (1 hasta este número)
+  cantidad: 44,            // cuántas fotos hay (1 hasta este número)
   extension: "webp",
   digitos: 1,             // 1 -> 1.png | 3 -> 001.png
   
