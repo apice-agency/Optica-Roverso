@@ -114,22 +114,20 @@ body::before {
    BANNER SUPERIOR (MARQUEE)
    ========================================================== */
 .top-announcement-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1001;
-  width: 100%;
-  height: var(--announcement-height);
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  background: linear-gradient(90deg, var(--blue-950), var(--brand-blue) 50%, var(--blue-950));
-  color: #fff;
-  font-size: 0.68rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    width: 100%;
+    height: var(--announcement-height);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: rgb(0, 0, 104);
+    color: #fff;
+    font-size: 0.68rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
 .marquee-track {
@@ -343,18 +341,99 @@ body:has(#catalog.active) .mobile-toggle { color: var(--text-color); text-shadow
 /* ==========================================================
    HERO · el momento "protagonista": la foto se enfoca como un lente
    ========================================================== */
+
+
 .hero-banner {
-  position: relative;
-  width: 100%;
-  height: clamp(300px, 65vh, 650px);
-  min-height: calc(100vh - var(--announcement-height));
-  margin-top: calc(var(--nav-height) * -1);
-  padding: 30px calc(5% + 80px) 30px 5%;   /* deja lugar al botón flotante de WhatsApp */
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  overflow: hidden;
-  background-color: var(--blue-950);
+    position: relative;
+    width: 100%;
+    height: clamp(300px, 65vh, 650px);
+    min-height: calc(100vh - var(--announcement-height));
+    margin-top: calc(var(--nav-height) * -1);
+    padding: 30px calc(5% + 80px) 30px 5%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    overflow: hidden;
+    background-color: var(--blue-950);
+}
+
+/* Contenedor de imágenes */
+.hero-slides {
+    position: absolute;
+    inset: 0;
+}
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.hero-slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Flechas */
+.hero-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.75);
+    color: #222;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.hero-arrow:hover {
+    background: white;
+}
+
+.hero-arrow.prev {
+    left: 20px;
+}
+
+.hero-arrow.next {
+    right: 20px;
+}
+
+/* Indicadores */
+.hero-dots {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 3;
+}
+
+.hero-dots span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.hero-dots span.active {
+    background: white;
+    width: 25px;
+    border-radius: 10px;
 }
 
 .hero-banner::before {
@@ -380,6 +459,51 @@ body:has(#catalog.active) .mobile-toggle { color: var(--text-color); text-shadow
 @keyframes hero-focus {
   from { filter: blur(26px) brightness(0.7); transform: scale(1.16); }
   to   { filter: blur(0) brightness(1);      transform: scale(1); }
+}
+
+/* Flecha para indicar scroll */
+.hero-scroll {
+    position: absolute;
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+
+    width: 35px;
+    height: 45px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.hero-scroll span {
+    width: 17px;
+    height: 17px;
+
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+
+    transform: rotate(45deg);
+    animation: scroll-down 1.5s infinite;
+}
+
+@keyframes scroll-down {
+    0% {
+        transform: translateY(-5px) rotate(45deg);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(7px) rotate(45deg);
+        opacity: 0;
+    }
 }
 
 /* Brillo que cruza los botones principales al pasar el mouse */

@@ -74,12 +74,36 @@
   <!-- SECCIÓN INICIO -->
   <section id="home" class="page-section active">
     <!-- Hero Banner Ancho Completo -->
-    <div class="hero-banner">
-      <!-- Botón reubicado en la esquina inferior derecha del banner -->
-        <button class="btn-hero-floating" onclick="showSection('catalog')">
-        VER CATÁLOGO <i class="ri-arrow-right-line"></i>
-        </button>
+    <section class="hero-banner">
+
+    <div class="hero-slides">
+        <div class="hero-slide active">
+            <img src="img/banner/banner.webp" alt="Banner 1">
+        </div>
+
+        <div class="hero-slide">
+            <img src="img/banner/banner2.webp" alt="Banner 2">
+        </div>
+
+        <div class="hero-slide">
+            <img src="img/banner/banner3.webp" alt="Banner 3">
+        </div>
     </div>
+    <a href="#catalogo" class="hero-scroll" aria-label="Deslizar hacia abajo">
+    <span></span>
+    </a>
+    <!-- Controles -->
+    <button class="hero-arrow prev" aria-label="Banner anterior">❮</button>
+    <button class="hero-arrow next" aria-label="Banner siguiente">❯</button>
+
+    <!-- Indicadores -->
+    <div class="hero-dots">
+        <span class="active"></span>
+        <span></span>
+        <span></span>
+    </div>
+
+  </section>
 
     <!-- Carrusel Destacados -->
     <div class="featured-section">

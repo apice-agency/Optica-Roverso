@@ -187,6 +187,58 @@ document.addEventListener('click', (e) => {
     }
 });
 
+// Banner carrusel
+const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.hero-dots span');
+
+const next = document.querySelector('.hero-arrow.next');
+const prev = document.querySelector('.hero-arrow.prev');
+
+let currentSlide = 0;
+let interval;
+
+function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    currentSlide = (index + slides.length) % slides.length;
+
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+}
+
+function nextSlide() {
+    showSlide(currentSlide + 1);
+}
+
+function prevSlide() {
+    showSlide(currentSlide - 1);
+}
+
+function startCarousel() {
+    clearInterval(interval);
+    interval = setInterval(nextSlide, 3000);
+}
+
+next.addEventListener('click', () => {
+    nextSlide();
+    startCarousel();
+});
+
+prev.addEventListener('click', () => {
+    prevSlide();
+    startCarousel();
+});
+
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        showSlide(index);
+        startCarousel();
+    });
+});
+
+startCarousel();
+
 
 // ENLACE DIRECTO A WHATSAPP
 function openWhatsApp(message) {
