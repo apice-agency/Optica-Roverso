@@ -72,39 +72,59 @@
   </header>
 
   <!-- SECCIÓN INICIO -->
-  <section id="home" class="page-section active">
-    <!-- Hero Banner Ancho Completo -->
+<!-- SECCIÓN INICIO -->
+<section id="home" class="page-section active">
+
     <section class="hero-banner">
 
-    <div class="hero-slides">
-        <div class="hero-slide active">
-            <img src="img/banner/banner.webp" alt="Banner 1">
+        <div class="hero-slides">
+
+            <div class="hero-slide active">
+                <picture>
+                    <source media="(max-width: 768px)"
+                            srcset="img/banner/banner-mobile.webp">
+                    <img src="img/banner/banner.webp" alt="Banner 1">
+                </picture>
+            </div>
+
+            <div class="hero-slide">
+                <picture>
+                    <source media="(max-width: 768px)"
+                            srcset="img/banner/banner4-mobile.webp">
+                    <img src="img/banner/banner4.webp" alt="Banner 2">
+                </picture>
+            </div>
+
+            <div class="hero-slide">
+                <picture>
+                    <source media="(max-width: 768px)"
+                            srcset="img/banner/banner3-mobile.webp">
+                    <img src="img/banner/banner3.webp" alt="Banner 3">
+                </picture>
+            </div>
+
         </div>
 
-        <div class="hero-slide">
-            <img src="img/banner/banner2.webp" alt="Banner 2">
+        <a href="#catalogo" class="hero-scroll"
+           aria-label="Deslizar hacia abajo">
+            <span></span>
+        </a>
+
+        <!-- Controles -->
+        <button class="hero-arrow prev"
+                aria-label="Banner anterior">❮</button>
+
+        <button class="hero-arrow next"
+                aria-label="Banner siguiente">❯</button>
+
+        <!-- Indicadores -->
+        <div class="hero-dots">
+            <span class="active"></span>
+            <span></span>
+            <span></span>
         </div>
 
-        <div class="hero-slide">
-            <img src="img/banner/banner3.webp" alt="Banner 3">
-        </div>
-    </div>
-    <a href="#catalogo" class="hero-scroll" aria-label="Deslizar hacia abajo">
-    <span></span>
-    </a>
-    <!-- Controles -->
-    <button class="hero-arrow prev" aria-label="Banner anterior">❮</button>
-    <button class="hero-arrow next" aria-label="Banner siguiente">❯</button>
-
-    <!-- Indicadores -->
-    <div class="hero-dots">
-        <span class="active"></span>
-        <span></span>
-        <span></span>
-    </div>
-
-  </section>
-
+    </section>
     <!-- Carrusel Destacados -->
     <div class="featured-section">
       <h2 class="section-title">MODELOS DESTACADOS</h2>
